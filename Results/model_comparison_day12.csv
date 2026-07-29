@@ -1,0 +1,4 @@
+Model,Accuracy,Precision,Recall,F1 Score,ROC-AUC
+Baseline (Logistic Regression),0.8852,0.0,0.0,0.0,0.6577
+XGBoost (Untuned),0.8949,0.5794,0.308,0.4022,0.903
+XGBoost (Tuned),0.8959,0.5786,0.3418,0.4297,0.8816
