@@ -3,7 +3,7 @@
 An AI-powered Supply Chain Decision Support System that predicts shipment delays, recommends optimal business actions using Machine Learning and Optimization, and enables closed-loop analytics with FastAPI, React, PostgreSQL, and XGBoost.
 
 ## Project Status
-Currently on **Day 13** of a 25-day internship development plan. The ML pipeline (data → model → evaluation) is built and validated; API/frontend/database layers are upcoming.
+Currently on **Day 13** of a 25-day project development plan. The ML pipeline (data → model → evaluation) is built and validated; API/frontend/database layers are upcoming.
 
 ## Dataset
 [SCMS Delivery History Dataset](.) — ~10,324 historical HIV/ARV medical supply shipment records to countries across Africa and Asia, including shipment mode, vendor, product, cost, weight, and delivery dates.
@@ -24,6 +24,7 @@ Predict whether a shipment will be delivered late (`Is Delayed`), based on featu
 | XGBoost Model             | `08_XGBoost_Model.ipynb`             | `xgboost_model.pkl`                                      |
 | Hyperparameter Tuning     | `09_Hyperparameter_Tuning.ipynb`     | `xgboost_best_model.pkl`                                 |
 | Model Evaluation          | `10_Model_Evaluation.ipynb`          | ROC-AUC comparison, `Results/`                           |
+| Feature Importance        | `11_Feature_Importance.ipynb`        | Compared untuned vs. tuned feature importances,`Results/`|
 
 ## Results (Test Set)
 | Model                          | Accuracy | Precision | Recall | F1        | ROC-AUC   |
