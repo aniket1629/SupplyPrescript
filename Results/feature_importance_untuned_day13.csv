@@ -1,0 +1,158 @@
+Feature,Importance
+Fulfill Via_From RDC,0.094994426
+Country_South Africa,0.055048864
+Country_Nigeria,0.050060574
+Vendor INCO Term_DDP,0.044656377
+Scheduled Year,0.030041246
+Molecule/Test Type_Lamivudine,0.021088043
+Country_Vietnam,0.0201906
+Vendor_Aurobindo Pharma Limited,0.019683601
+Brand_Generic,0.018251915
+Brand_Determine,0.017781053
+Product Group_ARV,0.017028589
+Shipment Mode_Ocean,0.016659936
+Country_Other,0.014194396
+"Vendor_Orgenics, Ltd",0.01292822
+Shipment Mode_Air Charter,0.012769214
+Vendor_S. BUYS WHOLESALER,0.01165313
+Line Item Insurance (USD),0.0113857305
+Vendor_PHARMACY DIRECT,0.011358354
+"Item Description_Efavirenz 600mg, tablets, 30 Tabs",0.011190195
+Scheduled Month,0.011132919
+Vendor_HETERO LABS LIMITED,0.010695992
+Country_Zimbabwe,0.010690225
+Country_Haiti,0.010082357
+Vendor_MYLAN LABORATORIES LTD (FORMERLY MATRIX LABORATORIES),0.009954392
+Dosage Form_Oral suspension,0.009701143
+Molecule/Test Type_Lamivudine/Zidovudine,0.00947485
+Scheduled Weekday,0.00945384
+Dosage Form_Tablet - FDC,0.009403858
+Dosage_200/50mg,0.009333918
+Dosage_10mg/ml,0.009152427
+Manufacturing Site_Inverness Japan,0.009138871
+Country_Uganda,0.00912242
+Molecule/Test Type_Lamivudine/Nevirapine/Zidovudine,0.008669795
+"Manufacturing Site_Trinity Biotech, Plc",0.008348483
+Manufacturing Site_Mylan (formerly Matrix) Nashik,0.008247617
+Manufacturing Site_Hetero Unit III Hyderabad IN,0.008075876
+Country_Ethiopia,0.008014905
+Country_Mozambique,0.007991194
+First Line Designation_Yes,0.007974485
+Country_Zambia,0.007901335
+Dosage_200mg,0.007869544
+Molecule/Test Type_Nevirapine,0.0078064273
+"Item Description_Zidovudine 300mg, tablets, 60 Tabs",0.007788709
+Unit Price,0.007784666
+"Item Description_Lamivudine/Zidovudine 150/300mg, tablets, 60 Tabs",0.007735042
+Pack Price,0.007735024
+Molecule/Test Type_Efavirenz,0.0077027227
+Shipment Mode_Truck,0.007539357
+Vendor_Other,0.0074783503
+Line Item Quantity,0.0074756895
+"Item Description_Lamivudine/Tenofovir Disoproxil Fumarate 300/300mg, tablets, 30 Tabs",0.0073676477
+"Item Description_Emtricitabine/Tenofovir Disoproxil Fumarate 200/300mg, tablets, 30 Tabs",0.0073206164
+Country_Tanzania,0.0072971354
+Line Item Value,0.0072736833
+"Manufacturing Site_Strides, Bangalore, India.",0.007265606
+Country_Guyana,0.0070442944
+Weight (Kilograms),0.007034395
+Molecule/Test Type_Lamivudine/Nevirapine/Stavudine,0.006976025
+Manufacturing Site_Other,0.0069341664
+Molecule/Test Type_Lopinavir/Ritonavir,0.0067939563
+Freight Cost (USD),0.0066898745
+Country_Rwanda,0.0066292305
+"Item Description_HIV 1/2, Determine Complete HIV Kit, 100 Tests",0.0065235775
+Molecule/Test Type_Zidovudine,0.006293629
+"Item Description_Lamivudine/Nevirapine/Zidovudine 150/200/300mg, tablets, 60 Tabs",0.0062011555
+"Item Description_Nevirapine 200mg, tablets, 60 Tabs",0.0061713834
+Country_South Sudan,0.0061063045
+"Manufacturing Site_Cipla, Goa, India",0.006086098
+Vendor INCO Term_EXW,0.0060634823
+Country_Côte d'Ivoire,0.0059778946
+Unit of Measure (Per Pack),0.005698039
+"Item Description_Efavirenz/Lamivudine/Tenofovir Disoproxil Fumarate 600/300/300mg, tablets, 30 Tabs",0.005692901
+Sub Classification_Pediatric,0.005499362
+"Manufacturing Site_Aurobindo Unit III, India",0.005494351
+Dosage_Other,0.005448115
+Vendor INCO Term_CIP,0.005427601
+"Item Description_Lamivudine/Nevirapine/Stavudine 150/200/30mg, tablets, 60 Tabs",0.005308976
+"Manufacturing Site_Alere Medical Co., Ltd.",0.005253231
+Dosage Form_Chewable/dispersible tablet - FDC,0.004864235
+Dosage Form_Tablet,0.004806424
+Item Description_Other,0.004756661
+Brand_Other,0.0047050943
+Molecule/Test Type_Other,0.0045195054
+Dosage Form_Oral solution,0.004325191
+Dosage_300mg,0.003956345
+"Item Description_Lopinavir/Ritonavir 200/50mg Aluvia, tablets, 120 Tabs",0.003899601
+"Item Description_Lamivudine 150mg, tablets, 60 Tabs",0.0034434383
+Dosage Form_Chewable/dispersible tablet,0.003392727
+Dosage_150mg,0.0033670962
+Dosage_600mg,0.003280792
+Vendor_STRIDES ARCOLAB LIMITED,0.0032807044
+Sub Classification_Adult,0.0029731821
+Vendor INCO Term_FCA,0.002891539
+Molecule/Test Type_Stavudine,0.0017247065
+Manufacturing Site_ABBVIE Ludwigshafen Germany,0.0010743958
+"Manufacturing Site_BMS Meymac, France",0.0004247097
+Managed By_Haiti Field Office,0.0
+Managed By_South Africa Field Office,0.0
+Managed By_PMO - US,0.0
+"Vendor_Trinity Biotech, Plc",0.0
+"Vendor_SHANGHAI KEHUA BIOENGINEERING CO.,LTD.  (KHB)",0.0
+Molecule/Test Type_Lamivudine/Tenofovir Disoproxil Fumarate,0.0
+Molecule/Test Type_Efavirenz/Lamivudine/Tenofovir Disoproxil Fumarate,0.0
+"Molecule/Test Type_HIV 1/2, Determine Complete HIV Kit",0.0
+"Molecule/Test Type_HIV 1/2, Uni-Gold HIV Kit",0.0
+"Item Description_Tenofovir Disoproxil Fumarate 300mg, tablets, 30 Tabs",0.0
+"Vendor_CHEMBIO DIAGNOSTIC SYSTEMS, INC.",0.0
+Vendor_MERCK SHARP & DOHME IDEA GMBH (FORMALLY MERCK SHARP & DOHME B.V.),0.0
+Vendor_SCMS from RDC,0.0
+Product Group_MRDT,0.0
+Vendor INCO Term_DAP,0.0
+Product Group_ANTM,0.0
+Product Group_HRDT,0.0
+Vendor INCO Term_DDU,0.0
+Shipment Mode_Unknown,0.0
+Vendor INCO Term_N/A - From RDC,0.0
+"Item Description_HIV 1/2, Uni-Gold HIV Kit, 20 Tests",0.0
+"Vendor_Standard Diagnostics, Inc.",0.0
+Vendor_CIPLA LIMITED,0.0
+Sub Classification_HIV test - Ancillary,0.0
+Sub Classification_Malaria,0.0
+Sub Classification_HIV test,0.0
+Brand_Bioline,0.0
+Brand_Colloidal Gold,0.0
+Brand_Kaletra,0.0
+Dosage_Not Specified,0.0
+Dosage_600/300/300mg,0.0
+Dosage_300/300mg,0.0
+Dosage_50mg,0.0
+Dosage_150/300/200mg,0.0
+Dosage_150/200/30mg,0.0
+Dosage_150/300mg,0.0
+Dosage_200/300mg,0.0
+Brand_Viread,0.0
+Brand_Norvir,0.0
+Brand_OraQuick,0.0
+Brand_Stat-Pak,0.0
+Brand_Stocrin/Sustiva,0.0
+Brand_Truvada,0.0
+Brand_Uni-Gold,0.0
+Brand_Videx,0.0
+Molecule/Test Type_Tenofovir Disoproxil Fumarate,0.0
+Brand_Invirase,0.0
+Dosage Form_Test kit - Ancillary,0.0
+Dosage Form_Test kit,0.0
+Dosage Form_Tablet - FDC + blister,0.0
+Dosage Form_Powder for oral solution,0.0
+Dosage Form_Oral powder,0.0
+Dosage Form_Injection,0.0
+Dosage Form_Delayed-release capsules,0.0
+Dosage Form_Delayed-release capsules - blister,0.0
+Dosage Form_Tablet - blister,0.0
+Dosage Form_Tablet - FDC + co-blister,0.0
+Manufacturing Site_Chembio Diagnostics Sys. Inc.,0.0
+"Manufacturing Site_Aspen-OSD, Port Elizabeth, SA",0.0
+"Manufacturing Site_MSD, Haarlem, NL",0.0
+"Manufacturing Site_Standard Diagnostics, Korea",0.0
