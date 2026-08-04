@@ -19,11 +19,29 @@ class InputData(BaseModel):
 @app.post("/predict")
 def predict(input_data: InputData):
 
-    df = pd.DataFrame([input_data.data])
+    try:
+        # Convert the input dictionary to a DataFrame
+        df = pd.DataFrame([input_data.data])
 
-    prediction = model.predict(df)[0]
+        # Clean column names (remove brackets if present)
+        df.columns = (
+            df.columns
+            .str.replace("[", "", regex=False)
+            .str.replace("]", "", regex=False)
+            .str.replace("<", "", regex=False)
+        )
 
-    return {"prediction": int(prediction)}
+        # Make prediction
+        prediction = model.predict(df)[0]
+
+        return {
+            "prediction": int(prediction)
+        }
+
+    except Exception as e:
+        return {
+            "error": "Invalid input. Please provide all required model features with the correct data types."
+        }
 @app.get("/test")
 def test_prediction():
     try:
@@ -54,6 +72,11 @@ def columns():
 def compare():
 
     sample = pd.read_csv("../Dataset/x_test.csv")
+    sample.columns = (
+    sample.columns
+    .str.replace("[", "", regex=False)
+    .str.replace("]", "", regex=False)
+)
 
     model_cols = set(model.feature_names_in_)
     sample_cols = set(sample.columns)
