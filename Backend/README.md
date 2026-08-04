@@ -1,33 +1,35 @@
 # SupplyPrescript Backend
 
-This backend is developed using FastAPI.
+This backend is built using **FastAPI**. It loads the trained XGBoost model and predicts whether a shipment will be delayed.
 
-## Run the API
+## Files
+
+- `api.py` – Main FastAPI application
+- `requirements.txt` – Required Python packages
+- `README.md` – Project information
+
+## Install
 
 ```bash
+pip install -r requirements.txt
+```
+
+## Run
+
+```bash
+cd Backend
 python -m uvicorn api:app --reload
+```
 
+## Open in Browser
 
+- Home: http://127.0.0.1:8000/
+- API Docs: http://127.0.0.1:8000/docs
 
----
+## Endpoints
 
-### 4. Test all endpoints once
-
-Visit:
-
-- ✅ `http://127.0.0.1:8000/`
-- ✅ `http://127.0.0.1:8000/docs`
-- ✅ `http://127.0.0.1:8000/test`
-- ✅ `http://127.0.0.1:8000/columns`
-- ✅ `http://127.0.0.1:8000/compare`
-
-If they work, you're done with Day 15.
-
----
-
-### 5. Commit the changes
-
-```bash
-git add .
-git commit -m "Implemented FastAPI backend API"
-git push origin main
+- `GET /` – Home page
+- `POST /predict` – Predict shipment delay
+- `GET /test` – Test the model
+- `GET /columns` – Show model features
+- `GET /compare` – Compare dataset and model columns
