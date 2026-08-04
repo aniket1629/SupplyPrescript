@@ -1,0 +1,93 @@
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    padding:40px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    color:#1e3a8a;
+    margin-bottom:40px;
+}
+
+.prediction-card{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    margin-bottom:40px;
+    text-align:center;
+}
+
+.prediction-card h2{
+    margin-bottom:15px;
+}
+
+#prediction{
+    font-size:24px;
+    font-weight:bold;
+    color:#2563eb;
+    margin:20px 0;
+}
+
+button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 30px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    color:#1e3a8a;
+    margin-bottom:15px;
+}
+
+.card p{
+    margin:10px 0;
+    color:#444;
+}
+
+@media(max-width:900px){
+
+.cards{
+grid-template-columns:1fr;
+}
+
+}
