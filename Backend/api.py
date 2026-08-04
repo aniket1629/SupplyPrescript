@@ -11,14 +11,19 @@ model = joblib.load("../Models/xgboost_best_model.pkl")
 def home():
     return {"message": "Supply Prescription Prediction API"}
 
+from pydantic import BaseModel
+
+class InputData(BaseModel):
+    data: dict
+
 @app.post("/predict")
-def predict(data: dict):
-    df = pd.DataFrame([data])
+def predict(input_data: InputData):
+
+    df = pd.DataFrame([input_data.data])
+
     prediction = model.predict(df)[0]
 
-    return {
-        "prediction": int(prediction)
-    }
+    return {"prediction": int(prediction)}
 @app.get("/test")
 def test_prediction():
     try:
