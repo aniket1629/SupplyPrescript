@@ -7,8 +7,17 @@ An AI-powered Supply Chain Decision Support System that predicts shipment delays
 ### Dashboard
 ![Dashboard](Screenshots/01_dashboard_home.png)
 
-### Live Prediction
-![Prediction](Screenshots/02_prediction_on_time.png)
+### Live Prediction — On Time
+![On Time Prediction](Screenshots/02_prediction_on_time.png)
+
+### Live Prediction — Delay Expected
+![Delay Prediction](Screenshots/03_prediction_delay.png)
+
+### Input Validation
+![Validation Warning](Screenshots/04_validation_warning.png)
+
+### Backend Down — Graceful Error Handling
+![Backend Down](Screenshots/05_backend_down.png)
 
 ### API Documentation
 ![Swagger UI](Screenshots/06_swagger_docs.png)
@@ -189,3 +198,24 @@ Added labels above form fields, a "⏳ Predicting..." loading state on both butt
 Day 21 — Application Testing
 
 Tested edge cases: empty fields (blocked with a warning), negative numbers (initially not blocked — fixed by adding a positive-number check), extremely large numbers (handled without crashing), backend down (graceful error message, no freeze), missing fields via direct API calls (clean JSON error, no raw crash page), and unknown category values like an invalid country (gracefully falls back to defaults instead of crashing).
+
+Day 22 — Documentation
+
+Created DOCUMENTATION.md covering system architecture, the full prediction data flow (form input → build_feature_row() → model → result), detailed API endpoint documentation, and an honest list 
+of known limitations (hardcoded CORS origin, no backend-side re-validation of positive numbers, Recall of 0.34 on the minority class, and the /predict_custom translation layer only using 4 of 
+157 real features).
+
+Day 23 — README
+
+Merged the separate Backend README into the root README, updated Project Status and Tech Stack to reflect the actual built system (FastAPI live, HTML/CSS/JS frontend, not the originally planned 
+React), updated Project Structure to match the real Backend/ and Frontend/ folders, and added /predict_custom to the documented endpoint list.
+
+Day 24 — Screenshots & Demo
+
+Captured and saved 6 screenshots (dashboard, on-time prediction, delay prediction, input validation warning, backend-down state, Swagger UI) to a new Screenshots/ folder and embedded them in 
+README.md.
+
+Day 25 — Final Cleanup
+
+Made the Recommended Actions cards conditional (shown only when a delay is predicted, hidden otherwise) instead of always visible. Upgraded their cost figures from static placeholders to live 
+calculations based on the user's actual entered freight cost (Air Freight = 1.5× freight cost, Secondary Supplier = +10%), verified to scale correctly across different input values. Documented remaining gaps honestly in DOCUMENTATION.md — notably that this is a simplified approximation, not the full SciPy/PuLP optimization engine described in the original project spec.
