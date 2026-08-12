@@ -1,9 +1,26 @@
 # SupplyPrescript
 
-An AI-powered Supply Chain Decision Support System that predicts shipment delays, recommends optimal business actions using Machine Learning and Optimization, and enables closed-loop analytics with FastAPI, React, PostgreSQL, and XGBoost.
+An AI-powered Supply Chain Decision Support System that predicts shipment delays, recommends optimal business actions using Machine Learning and Optimization, and enables closed-loop analytics with FastAPI, HTML/CSS/JS, and XGBoost.
 
-## Project Status
-Currently on **Day 13** of a 25-day project development plan. The ML pipeline (data → model → evaluation) is built and validated; API/frontend/database layers are upcoming.
+## Screenshots
+
+### Dashboard
+![Dashboard](Screenshots/01_dashboard_home.png)
+
+### Live Prediction — On Time
+![On Time Prediction](Screenshots/02_prediction_on_time.png)
+
+### Live Prediction — Delay Expected
+![Delay Prediction](Screenshots/03_prediction_delay.png)
+
+### Input Validation
+![Validation Warning](Screenshots/04_validation_warning.png)
+
+### Backend Down — Graceful Error Handling
+![Backend Down](Screenshots/05_backend_down.png)
+
+### API Documentation
+![Swagger UI](Screenshots/06_swagger_docs.png)
 
 ## Dataset
 [SCMS Delivery History Dataset](.) — ~10,324 historical HIV/ARV medical supply shipment records to countries across Africa and Asia, including shipment mode, vendor, product, cost, weight, and delivery dates.
@@ -37,16 +54,25 @@ Predict whether a shipment will be delivered late (`Is Delayed`), based on featu
 
 ## Tech Stack
 - **ML:** Python, pandas, scikit-learn, XGBoost
-- **API:** FastAPI *(planned)*
-- **Frontend:** React *(planned)*
+- **API:** FastAPI
+- **Frontend:** HTML, CSS, JavaScript (vanilla)
 - **Database:** PostgreSQL *(planned)*
 
 ## Requirements
-See `Requirements.txt`.
+See `requirements.txt` (in the `Backend/` folder).
+
 
 ## Project Structure
 ```
 SupplyPrescript/
+├── Backend/
+│ ├── api.py
+│ ├── requirements.txt
+│ └── README.md
+├── Frontend/
+│ ├── index.html
+│ ├── script.js
+│ └── style.css
 ├── Dataset/
 ├── Models/
 ├── Results/
@@ -54,7 +80,38 @@ SupplyPrescript/
 └── README.md
 ```
 
-Here's a draft for every day completed so far (1–13), each verified against your actual notebook code/outputs rather than assumed:
+## Backend
+
+The backend is built using **FastAPI**. It loads the trained XGBoost model and predicts whether a shipment will be delayed.
+
+### Install
+```bash
+cd Backend
+pip install -r requirements.txt
+```
+
+### Run
+```bash
+cd Backend
+python -m uvicorn api:app --reload
+```
+
+### Open in Browser
+- Home: http://127.0.0.1:8000/
+- API Docs: http://127.0.0.1:8000/docs
+
+### Endpoints
+- `GET /` – Home page
+- `POST /predict` – Raw prediction endpoint (expects all 157 model columns as a dict)
+- `POST /predict_custom` – User-facing prediction endpoint (expects country, shipmentMode, weight, freightCost; fills the rest with training-data defaults)
+- `GET /test` – Fixed demo endpoint, always predicts on row 0 of `x_test.csv`
+- `GET /columns` – Show model features
+- `GET /compare` – Compare dataset and model columns
+
+### Frontend
+Open `Frontend/index.html` via Live Server (recommended, avoids CORS issues) while the backend is running. The dashboard lets you enter shipment details and get a live prediction, plus a fixed-row demo for quick backend health checks.
+
+## Day-by-Day Log
 
 Day 1 — Data Understanding
 
@@ -76,7 +133,7 @@ Day 5 — EDA Insights
 
 Consolidated the visual analysis into insights: identified skewed distributions in cost/weight-related columns and notable class imbalance in categorical fields tied to country and vendor concentration. These observations directly informed the high-cardinality handling and imbalance-aware evaluation approach used in later days.
 
-(Note: Days 3–5 all live in one shared notebook, 03_Exploratory_Data_Analysis.ipynb, so consider splitting these into separate cells/sections if your reviewer expects day-by-day separation.)
+(Note: Days 3–5 all live in one shared notebook, 03_Exploratory_Data_Analysis.ipynb.)
 
 Day 6 — Feature Engineering
 
@@ -88,24 +145,77 @@ Dropped ID columns (no predictive value) and leakage columns — Delivered to Cl
 
 Day 8 — Train/Test Split
 
-Split into 80/20 train/test (X_train: 8,259 rows, X_test: 2,065 rows, 157 features) using stratify=y to preserve the delay rate in both sets (11.49% train vs. 11.48% test — confirming the split didn't introduce imbalance skew). Used random_state=42 for reproducibility.
+Split into 80/20 train/test (X_train: 8,259 rows, X_test: 2,065 rows, 157 features) using stratify=y to preserve the delay rate in both sets (11.49% train vs. 11.48% test). Used random_state=42 for reproducibility.
 
 Day 9 — Baseline Model
 
-Trained a Logistic Regression baseline. Result: 88.52% accuracy, but 0.0 precision/recall/F1 — the model never predicted a single "delayed" case, defaulting to the majority class every time. This is a direct consequence of class imbalance and is the key motivating insight for using precision/recall/F1/ROC-AUC in later evaluation rather than accuracy alone.
+Trained a Logistic Regression baseline. Result: 88.52% accuracy, but 0.0 precision/recall/F1 — the model never predicted a single "delayed" case. Key motivating insight for using precision/recall/F1/ROC-AUC in later evaluation rather than accuracy alone.
 
 Day 10 — XGBoost Model
 
-Trained an untuned XGBoost classifier. Result: 89.49% accuracy, 0.579 precision, 0.308 recall, 0.402 F1 — a substantial improvement over the baseline in actually detecting delayed shipments. Extracted feature importances; top drivers were Fulfill Via_From RDC, Country_South Africa, and Country_Nigeria. Model saved to ../Models/xgboost_model.pkl.
+Trained an untuned XGBoost classifier. Result: 89.49% accuracy, 0.579 precision, 0.308 recall, 0.402 F1. Top drivers: Fulfill Via_From RDC, Country_South Africa, Country_Nigeria. Model saved to ../Models/xgboost_model.pkl.
 
 Day 11 — Hyperparameter Tuning
 
-Ran RandomizedSearchCV (20 iterations, 5-fold CV) over n_estimators, max_depth, learning_rate, subsample, and colsample_bytree, optimizing for F1 score (scoring="f1") rather than accuracy, since F1 better reflects performance on the minority "delayed" class. Best params: max_depth=7, n_estimators=300, learning_rate=0.2, subsample=0.8, colsample_bytree=1.0 (best CV F1: 0.396). Test-set result: 89.59% accuracy, 0.579 precision, 0.342 recall, 0.430 F1 — a modest F1 improvement over the untuned model. Saved to ../Models/xgboost_best_model.pkl.
+Ran RandomizedSearchCV (20 iterations, 5-fold CV), optimizing for F1 score. Best params: max_depth=7, n_estimators=300, learning_rate=0.2, subsample=0.8, colsample_bytree=1.0. Test-set result: 89.59% accuracy, 0.579 precision, 0.342 recall, 0.430 F1. Saved to ../Models/xgboost_best_model.pkl.
 
 Day 12 — Model Evaluation
 
-Compared all three models on ROC-AUC and plotted ROC curves. Untuned XGBoost had the best ROC-AUC (0.903), edging out the tuned model (0.882) despite the tuned model's better F1 — because tuning optimized for F1 (a threshold-specific metric), not for ranking quality across all thresholds. Baseline's ROC-AUC (0.658) confirms its probability scores carried weak signal despite its useless classification decisions. Takeaway: the tuning objective directly shapes which metric improves, and should be chosen based on the actual business trade-off that matters.
+Compared all three models on ROC-AUC and plotted ROC curves. Untuned XGBoost had the best ROC-AUC (0.903), edging out the tuned model (0.882) despite the tuned model's better F1 — tuning optimized for F1 (threshold-specific), not ranking quality across all thresholds.
 
 Day 13 — Feature Importance
 
-(as finalized above) Compared untuned vs. tuned feature importances. Core drivers (Fulfill Via_From RDC, Country_South Africa, Country_Nigeria, Vendor INCO Term_DDP, Scheduled Year) are stable across both models, indicating real signal. The deeper tuned model (max_depth=7) spreads importance more thinly and surfaces additional vendor/product-specific features, suggesting some delay risk is tied to specific supplier logistics.
+Compared untuned vs. tuned feature importances. Core drivers (Fulfill Via_From RDC, Country_South Africa, Country_Nigeria, Vendor INCO Term_DDP, Scheduled Year) stable across both models.
+
+Day 14 — Save Model
+
+No separate notebook — saving happened naturally across Days 10–12 (`xgboost_model.pkl`, `xgboost_best_model.pkl`, `baseline_logistic_model.pkl`, all confirmed correct).
+
+Day 15 — Backend API
+
+Built the FastAPI backend (`api.py`) with `/`, `/predict`, `/test`, `/columns`, `/compare` endpoints. Loads the tuned XGBoost model and serves predictions.
+
+Day 16 — API Testing
+
+Tested all endpoints live via the FastAPI Swagger UI (`/docs`) and confirmed correct `200 OK` responses.
+
+Day 17 — Frontend Design
+
+Built the initial dashboard (`index.html`, `style.css`, `script.js`) with a Prediction Result card and Recommended Actions cards. Predict button called `/test` (fixed row 0 of `x_test.csv`) to prove the wiring worked end-to-end.
+
+Day 18 — Integration
+
+Added CORS middleware to `api.py` (locked to `http://127.0.0.1:5500`) so the frontend could safely call the backend. Added `try/catch` error handling in `script.js` so the dashboard shows "Backend not running" gracefully instead of failing silently if the API is down. Verified both the working and backend-down cases live.
+
+Day 19 — Prediction Workflow
+
+Added a real shipment-details form (Country, Shipment Mode, Weight, Freight Cost) and a new `/predict_custom` endpoint. Built a `build_feature_row()` translation layer that fills the 153 columns not collected from the user with realistic training-data defaults (median for numeric columns, most common category per one-hot group) rather than naive zeros — avoiding an all-zero input pattern the model never saw in training. Verified predictions genuinely change based on user input (tested both "Delay Expected" and "On Time" outcomes).
+
+Day 20 — UI Improvements
+
+Added labels above form fields, a "⏳ Predicting..." loading state on both buttons, input validation for empty fields, and styled the new form inputs. Relabeled the old fixed-row demo card as "Demo: Sample Prediction (Fixed Row)" to avoid confusion with the real prediction form.
+
+Day 21 — Application Testing
+
+Tested edge cases: empty fields (blocked with a warning), negative numbers (initially not blocked — fixed by adding a positive-number check), extremely large numbers (handled without crashing), backend down (graceful error message, no freeze), missing fields via direct API calls (clean JSON error, no raw crash page), and unknown category values like an invalid country (gracefully falls back to defaults instead of crashing).
+
+Day 22 — Documentation
+
+Created DOCUMENTATION.md covering system architecture, the full prediction data flow (form input → build_feature_row() → model → result), detailed API endpoint documentation, and an honest list 
+of known limitations (hardcoded CORS origin, no backend-side re-validation of positive numbers, Recall of 0.34 on the minority class, and the /predict_custom translation layer only using 4 of 
+157 real features).
+
+Day 23 — README
+
+Merged the separate Backend README into the root README, updated Project Status and Tech Stack to reflect the actual built system (FastAPI live, HTML/CSS/JS frontend, not the originally planned 
+React), updated Project Structure to match the real Backend/ and Frontend/ folders, and added /predict_custom to the documented endpoint list.
+
+Day 24 — Screenshots & Demo
+
+Captured and saved 6 screenshots (dashboard, on-time prediction, delay prediction, input validation warning, backend-down state, Swagger UI) to a new Screenshots/ folder and embedded them in 
+README.md.
+
+Day 25 — Final Cleanup
+
+Made the Recommended Actions cards conditional (shown only when a delay is predicted, hidden otherwise) instead of always visible. Upgraded their cost figures from static placeholders to live 
+calculations based on the user's actual entered freight cost (Air Freight = 1.5× freight cost, Secondary Supplier = +10%), verified to scale correctly across different input values. Documented remaining gaps honestly in DOCUMENTATION.md — notably that this is a simplified approximation, not the full SciPy/PuLP optimization engine described in the original project spec.

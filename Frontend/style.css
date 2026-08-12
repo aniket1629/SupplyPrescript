@@ -35,8 +35,41 @@ h1{
     margin-bottom:15px;
 }
 
+label{
+    display:block;
+    font-size:13px;
+    color:#6b7280;
+    margin:12px 0 4px;
+    text-align:left;
+    max-width:220px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+select, input[type="number"]{
+    padding:10px 14px;
+    border:1px solid #d1d5db;
+    border-radius:6px;
+    font-size:15px;
+    margin:0 6px;
+    max-width:220px;
+    width:100%;
+}
+
+select:focus, input[type="number"]:focus{
+    outline:none;
+    border-color:#2563eb;
+}
+
 #prediction{
     font-size:24px;
+    font-weight:bold;
+    color:#2563eb;
+    margin:20px 0;
+}
+
+#customPrediction{
+    font-size:20px;
     font-weight:bold;
     color:#2563eb;
     margin:20px 0;
@@ -50,6 +83,7 @@ button{
     border-radius:6px;
     cursor:pointer;
     font-size:16px;
+    margin-top:15px;
 }
 
 button:hover{
