@@ -5,7 +5,7 @@ An AI-powered Supply Chain Decision Support System that predicts shipment delays
 ## Screenshots
 
 ### Dashboard
-![Dashboard](Screenshots/01_dashboard_home.png)
+![Dashboard](Screenshots/01_dashboard_home1.png)
 
 ### Live Prediction — On Time
 ![On Time Prediction](Screenshots/02_prediction_on_time.png)
