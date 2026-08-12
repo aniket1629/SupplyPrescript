@@ -47,6 +47,12 @@ customBtn.addEventListener("click", async () => {
         return;
     }
 
+    if (Number(weightVal) <= 0 || Number(freightVal) <= 0) {
+        customPrediction.innerHTML = "⚠️ Weight and freight cost must be positive numbers";
+        customPrediction.style.color = "orange";
+        return;
+    }
+
     const payload = {
         country: document.getElementById("country").value,
         shipmentMode: document.getElementById("shipmentMode").value,
