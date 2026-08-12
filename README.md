@@ -2,8 +2,16 @@
 
 An AI-powered Supply Chain Decision Support System that predicts shipment delays, recommends optimal business actions using Machine Learning and Optimization, and enables closed-loop analytics with FastAPI, HTML/CSS/JS, and XGBoost.
 
-## Project Status
-Currently on **Day 21** of a 25-day project development plan. The ML pipeline, backend API, and frontend dashboard are built, integrated, and tested end-to-end. Documentation and final cleanup remain.
+## Screenshots
+
+### Dashboard
+![Dashboard](Screenshots/01_dashboard_home.png)
+
+### Live Prediction
+![Prediction](Screenshots/02_prediction_on_time.png)
+
+### API Documentation
+![Swagger UI](Screenshots/06_swagger_docs.png)
 
 ## Dataset
 [SCMS Delivery History Dataset](.) — ~10,324 historical HIV/ARV medical supply shipment records to countries across Africa and Asia, including shipment mode, vendor, product, cost, weight, and delivery dates.
