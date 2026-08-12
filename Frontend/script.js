@@ -3,6 +3,9 @@ const prediction = document.getElementById("prediction");
 
 predictBtn.addEventListener("click", async () => {
 
+    prediction.innerHTML = "⏳ Predicting...";
+    prediction.style.color = "#6b7280";
+
     try {
 
         const response = await fetch("http://127.0.0.1:8000/test");
@@ -35,12 +38,24 @@ const customPrediction = document.getElementById("customPrediction");
 
 customBtn.addEventListener("click", async () => {
 
+    const weightVal = document.getElementById("weight").value;
+    const freightVal = document.getElementById("freightCost").value;
+
+    if (!weightVal || !freightVal) {
+        customPrediction.innerHTML = "⚠️ Please fill in weight and freight cost";
+        customPrediction.style.color = "orange";
+        return;
+    }
+
     const payload = {
         country: document.getElementById("country").value,
         shipmentMode: document.getElementById("shipmentMode").value,
-        weight: document.getElementById("weight").value,
-        freightCost: document.getElementById("freightCost").value,
+        weight: weightVal,
+        freightCost: freightVal,
     };
+
+    customPrediction.innerHTML = "⏳ Predicting...";
+    customPrediction.style.color = "#6b7280";
 
     try {
 
